@@ -1,15 +1,20 @@
 package com.example.wakebulary.frontend
 
 import android.os.Bundle
-import android.widget.EditText
 import androidx.activity.ComponentActivity
-import com.example.wakebulary.R
-import com.example.wakebulary.backend.DataBaseClient
 import android.util.Log
+import com.example.wakebulary.backend.DataBaseClient
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout)
+        try {
+            val client = DataBaseClient(applicationContext)
+            client.insertTranslation("рус", listOf("abc","cde"))
+            val d = client.translateWord("рус")
+        }
+        catch (e: Exception) {
+            e.message?.let { Log.i("Print", it) }
+        }
     }
 }
