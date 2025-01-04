@@ -47,9 +47,13 @@ class DataBaseHelper(context: Context) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL("DROP TABLE IF EXISTS rus")
-        db?.execSQL("DROP TABLE IF EXISTS eng")
-        db?.execSQL("DROP TABLE IF EXISTS eng_rus")
-        onCreate(db)
+        val cursor = db?.rawQuery("SELECT * FROM eng_rus", null)
+        if (!cursor!!.moveToFirst()) {
+            db.execSQL("DROP TABLE IF EXISTS rus")
+            db.execSQL("DROP TABLE IF EXISTS eng")
+            db.execSQL("DROP TABLE IF EXISTS eng_rus")
+            onCreate(db)
+        }
+        cursor.close()
     }
 }

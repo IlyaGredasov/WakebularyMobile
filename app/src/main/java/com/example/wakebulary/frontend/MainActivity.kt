@@ -10,10 +10,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         try {
             val client = DataBaseClient(applicationContext)
-            client.insertTranslation("рус", listOf("abc","cde"))
-            val d = client.translateWord("рус")
-        }
-        catch (e: Exception) {
+            client.importDataBase("database.db")
+        } catch (e: Exception) {
             e.message?.let { Log.i("Print", it) }
         }
     }

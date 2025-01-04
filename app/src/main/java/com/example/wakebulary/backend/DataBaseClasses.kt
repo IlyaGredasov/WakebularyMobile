@@ -10,7 +10,9 @@ const val punctuations = ".,;:!?-"
 const val rusLetters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
 const val engLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-data class SessionStatistics(val correct: Int, val attempts: Int, var sessionTime: Double) {
+data class WordTranslation(val word: String, val translation: MutableList<String>)
+
+data class SessionStatistics(var correct: Int, var attempts: Int, var sessionTime: Double) {
     val precision: Double
         get() = if (attempts == 0) 0.0 else correct / attempts.toDouble()
 

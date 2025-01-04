@@ -6,7 +6,7 @@ enum class WordDelay(val delay: Int) {
     TWO_SECONDS(2),
     THREE_SECONDS(3),
     FIVE_SECONDS(5),
-    TEN_SECONDS(10),
+    TEN_SECONDS(10)
 }
 
 object Settings {
